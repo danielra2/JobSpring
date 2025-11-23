@@ -1,10 +1,7 @@
 package mycode.jobspring.user.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import mycode.jobspring.masina.models.Masina;
 
 import java.util.List;
@@ -14,8 +11,7 @@ import java.util.TreeSet;
 @Entity
 @Table(name="user")
 @AllArgsConstructor
-@NoArgsConstructor
-@Data
+
 
 public class User {
     @Id
@@ -38,9 +34,20 @@ public class User {
     )
     private Set<Masina> masini= new TreeSet<>();
 
+    public User() {
+
+
+    }
+
+
+    public void addMasina(Masina masina){
+        masini.add(masina);
+        masina.setUser(this);
+    }
+
     @Override
     public String toString(){
-        return "Nume: "+nume+" prenume "+prenume+" varsta "+varsta+" masina "+masini;
+        return "Nume: "+nume+" prenume "+prenume+" varsta "+varsta+" masina ";
     }
 
     public Long getId() {
