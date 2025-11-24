@@ -33,13 +33,18 @@ public interface UserRepository extends JpaRepository<User,Long> {
     List<User> findUsersWithoutMasini();
     @EntityGraph(attributePaths = "masini")
     List<User> findByMasini_MarcaAndVarstaGreaterThan(String marca,int varsta);
-    @EntityGraph(attributePaths = "masini")
-    List<User> findByNumeAndPrenume(String nume,String prenume);
+
     @EntityGraph(attributePaths = "masini")
     List<User> findByPrenumeStartingWith(String prefix);
     @EntityGraph(attributePaths = "masini")
     List<User> findByMasini_ModelIsNot(String model);
     @EntityGraph(attributePaths = "masini")
     List<User> findByMasini_NumarKilometriGreaterThanOrderByVarstaAsc(int numarKilometri);
+
+
+
+    Optional<User>findByNumeAndVarsta(String nume,int varsta);
+    Optional<User>findByNumeAndPrenume(String nume,String prenume);
+
 
 }

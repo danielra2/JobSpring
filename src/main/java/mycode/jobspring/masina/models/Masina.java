@@ -20,20 +20,26 @@ public class Masina {
     @Column(nullable = false,length = 255)
     private String marca;
 
+    @Column(nullable = false)
+    private int price;
+
     @Column(nullable = false,length = 255)
     private String model;
 
     @Column(nullable = false)
     private int numarKilometri;
 
+
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
     private User user;
 
-    public Masina(String marca,String model, int numarKilometri, User user) {
+    public Masina(String marca,String model,int price, int numarKilometri, User user) {
         this.marca = marca;
         this.model = model;
         this.numarKilometri = numarKilometri;
+        this.price=price;
         this.user = user;
     }
 

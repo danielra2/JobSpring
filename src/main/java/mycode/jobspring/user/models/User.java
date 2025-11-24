@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import mycode.jobspring.masina.models.Masina;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -32,14 +33,12 @@ public class User {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private Set<Masina> masini= new TreeSet<>();
+    private Set<Masina> masini= new HashSet<>();
 
     public User() {
 
 
     }
-
-
     public void addMasina(Masina masina){
         masini.add(masina);
         masina.setUser(this);
