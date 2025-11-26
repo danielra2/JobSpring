@@ -12,6 +12,6 @@ public interface UserCommandService {
     UserResponse deleteUserByNumeAndPrenume(String nume, String prenume) throws UserDoesntExistException;
     UserResponse addMasinaToUser(long userId, MasinaDto masinaDto) throws UserDoesntExistException;
     UserResponse updateUserPut(long id,UserDto userDto)throws UserDoesntExistException;
-    UserResponse updateUserPatch(long id, UserPatchDto userPatchDto);
+    UserResponse updateUserPatch(long id, UserPatchDto userPatchDto) throws UserDoesntExistException;
 
 }

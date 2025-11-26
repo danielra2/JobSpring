@@ -74,17 +74,23 @@ public class UserCommandServiceImpl implements UserCommandService {
         existingUser.setNume(userDto.nume());
         existingUser.setPrenume(userDto.prenume());
         existingUser.setVarsta(userDto.varsta());
-
-        User updatedUser=userRepository.save(existingUser);
-        return mapper.mapUserToUserResponse(updatedUser);
-
-
+        return mapper.mapUserToUserResponse(existingUser);
 
     }
 
+    @Transactional
     @Override
-    public UserResponse updateUserPatch(long id, UserPatchDto userPatchDto) {
-        return null;
+    public UserResponse updateUserPatch(long id, UserPatchDto userPatchDto) throws UserDoesntExistException {User existingUser=userRepository.findById(id).orElseThrow(UserDoesntExistException::new);
+        if(userPatchDto.nume()!=null){
+            existingUser.setNume(userPatchDto.nume());
+        }
+        if(userPatchDto.prenume()!=null){
+            existingUser.setPrenume(userPatchDto.prenume());
+        }
+        if(userPatchDto.varsta()!=null){
+            existingUser.setVarsta(userPatchDto.varsta());
+        }
+        return mapper.mapUserToUserResponse(existingUser);
     }
 
 

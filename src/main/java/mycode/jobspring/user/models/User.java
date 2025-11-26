@@ -46,7 +46,7 @@ public class User {
 
     @Override
     public String toString(){
-        return "Nume: "+nume+" prenume "+prenume+" varsta "+varsta+" masina ";
+        return "Nume: "+nume+" prenume: "+prenume+" varsta "+varsta+" masina ";
     }
 
     public Long getId() {

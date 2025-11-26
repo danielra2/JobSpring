@@ -4,7 +4,9 @@ import mycode.jobspring.masina.dtos.MasinaDto;
 import mycode.jobspring.masina.dtos.MasinaResponse;
 import mycode.jobspring.masina.models.Masina;
 import mycode.jobspring.user.dtos.UserDto;
+import mycode.jobspring.user.dtos.UserNumePrenumeVarstaResponse;
 import mycode.jobspring.user.dtos.UserResponse;
+import mycode.jobspring.user.dtos.UserSimpleResponse;
 import mycode.jobspring.user.models.User;
 import org.springframework.stereotype.Component;
 
@@ -97,5 +99,23 @@ public class JobSpringMapper {
                 .filter(Objects::nonNull)
                 .map(this::mapMasinaToMasinaResponse)
                 .toList();
+    }
+    public UserNumePrenumeVarstaResponse mapUserToNumePrenumeVarstaResponse(User u){
+        Objects.requireNonNull(u,"User entity is null");
+        return new UserNumePrenumeVarstaResponse(nvl(u.getNume()),nvl(u.getPrenume()),u.getVarsta());
+    }
+    public List<UserNumePrenumeVarstaResponse> mapUserListToNumePrenumeVarstaResponseList(List<User> list){
+        if(list==null)return List.of();
+        return list.stream().filter(Objects::nonNull).map(this::mapUserToNumePrenumeVarstaResponse).toList();
+    }
+
+    // NOU: Mapeaza User la UserSimpleResponse
+    public UserSimpleResponse mapUserToSimpleResponse(User u){
+        Objects.requireNonNull(u,"User entity is null");
+        return new UserSimpleResponse(nvl(u.getNume()),nvl(u.getPrenume()));
+    }
+    public List<UserSimpleResponse> mapUserListToSimpleResponseList(List<User> list){
+        if(list==null)return List.of();
+        return list.stream().filter(Objects::nonNull).map(this::mapUserToSimpleResponse).toList();
     }
 }
