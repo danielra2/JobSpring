@@ -44,14 +44,13 @@ public class UserCommandServiceImpl implements UserCommandService {
     @Transactional
     @Override
     public UserResponse deleteUserByNumeAndPrenume(String nume, String prenume) throws UserDoesntExistException {
-        // UserRepository.findByNumeAndPrenume returneaza List<User>
         Optional<User> userList = userRepository.findByNumeAndPrenume(nume, prenume);
 
         if (!userList.isPresent()) {
             throw new UserDoesntExistException();
         }
 
-        // Presupunem că ștergem primul user găsit.
+
         User userToDelete = userList.get();
         userRepository.delete(userToDelete);
 
