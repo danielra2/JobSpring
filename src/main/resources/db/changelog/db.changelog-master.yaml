@@ -1,4 +1,4 @@
-databaseChangeLog:databaseChangeLog:
+databaseChangeLog:
   - changeSet:
       id: 001-create-user-table
       author: mycode
@@ -72,5 +72,3 @@ databaseChangeLog:databaseChangeLog:
             referencedTableName: user
             referencedColumnNames: id
             constraintName: fk_masina_user
-databaseChangeLog:
-  - 
