@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:users;DB_CLOSE_DELAY=-1;MODE=MySQL
+    url: jdbc:h2:mem:jobspringtest;DB_CLOSE_DELAY=-1;MODE=MySQL
     username: sa
     password: sa
     driver-class-name: org.h2.Driver
@@ -10,7 +10,7 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.H2Dialect
-    show-sql: false
+    show-sql: true
     open-in-view: false
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.yaml
