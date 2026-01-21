@@ -16,7 +16,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
-import java.util.Collections;
 import java.util.HashSet;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -47,17 +46,14 @@ public class UserControllerIT {
     @Test
     void createUserEndpointPersistsEntity() throws Exception {
 
-        UserDto userDto = new UserDto("Popescu", "Ion", 30, new HashSet<>());
+        UserDto userDto=new UserDto("Popescu","Ion",30,new HashSet<>());
 
-        MvcResult result = mockMvc.perform(post("/api/job/add").contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsBytes(userDto))).andExpect(status().isCreated()).andReturn();
-
-        UserResponse response = objectMapper.readValue(result.getResponse().getContentAsByteArray(),UserResponse.class
-        );
-
+        MvcResult result= mockMvc.perform(post("/api/job/add").contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsBytes(userDto))).andExpect(status().isCreated()).andReturn();
+        UserResponse response=objectMapper.readValue(result.getResponse().getContentAsByteArray(),UserResponse.class);
         assertThat(response.nume()).isEqualTo("Popescu");
         assertThat(response.prenume()).isEqualTo("Ion");
 
-        assertThat(userRepository.findByNumeAndPrenume("Popescu", "Ion")).isPresent();
+        assertThat(userRepository.findByNumeAndPrenume("Popescu","Ion")).isPresent();
     }
 
     @Test
@@ -70,8 +66,8 @@ public class UserControllerIT {
         user.setMasini(new HashSet<>());
         userRepository.save(user);
 
-        MvcResult result = mockMvc.perform(get("/api/job").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn();
-        UserListResponse response = objectMapper.readValue(result.getResponse().getContentAsByteArray(),UserListResponse.class);
+        MvcResult result=mockMvc.perform(get("/api/job").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn();
+        UserListResponse response =objectMapper.readValue(result.getResponse().getContentAsByteArray(),UserListResponse.class);
         assertThat(response.userList()).hasSize(1);
         assertThat(response.userList().get(0).nume()).isEqualTo("Daniel");
     }

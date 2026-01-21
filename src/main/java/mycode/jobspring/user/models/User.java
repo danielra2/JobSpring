@@ -7,7 +7,7 @@ import mycode.jobspring.masina.models.Masina;
 import java.util.HashSet;
 import java.util.Set;
 @Entity
-@Table(name="user")
+@Table(name="users")
 @AllArgsConstructor
 @Builder
 public class User {

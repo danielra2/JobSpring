@@ -4,7 +4,7 @@ databaseChangeLog:
       author: mycode
       changes:
         - createTable:
-            tableName: user
+            tableName: users
             columns:
               - column:
                   name: id
@@ -69,6 +69,21 @@ databaseChangeLog:
         - addForeignKeyConstraint:
             baseTableName: masina
             baseColumnNames: user_id
-            referencedTableName: user
+            referencedTableName: users
             referencedColumnNames: id
             constraintName: fk_masina_user
+
+
+  - changeSet:
+      id: 003-insert-users
+      author: dani
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  {name: nume,value: "Popescu"}
+              - column:
+                  {name: prenume,value: "Dan"}
+              - column:
+                  {name: varsta,value: 12}
