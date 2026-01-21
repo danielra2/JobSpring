@@ -5,15 +5,11 @@ import lombok.*;
 import mycode.jobspring.masina.models.Masina;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
-
 @Entity
 @Table(name="user")
 @AllArgsConstructor
-
-
+@Builder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

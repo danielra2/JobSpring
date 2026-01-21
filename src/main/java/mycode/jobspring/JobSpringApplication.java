@@ -15,5 +15,15 @@ public class JobSpringApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(JobSpringApplication.class, args);
+
     }
+
+//    @Bean
+//    CommandLineRunner show(UserRepository userRepository) {
+//        return args -> {
+//            System.out.println("==========");
+//            List<User> carteList = userRepository.findUsersWithoutMasini();
+//            carteList.stream().forEach(System.out::println);
+//        };
+   // }
 }

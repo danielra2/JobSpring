@@ -89,6 +89,7 @@ public class JobSpringMapper {
         return u;
     }
 
+
     public List<UserResponse> mapUserListToUserResponseList(List<User> userList) {
         if (userList == null) return List.of();
         return userList.stream().map(this::mapUserToUserResponse).toList();

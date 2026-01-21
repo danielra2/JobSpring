@@ -1,17 +1,13 @@
 package mycode.jobspring.masina.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import mycode.jobspring.user.models.User;
 
 @Entity
 @Table(name="masina")
-@AllArgsConstructor
 @Builder
-@Data
+@AllArgsConstructor
 public class Masina {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
